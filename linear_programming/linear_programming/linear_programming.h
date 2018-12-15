@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <set>
 #include <utility>
-#define EXP (0.2e-20)
+#define EXP (2e-20)
 using namespace std;
 #define INFTY (2e20)
 #pragma once
@@ -99,7 +99,7 @@ public:
 	void set_value_column(Mat & mat);
 	void set_object_function(Mat & mat);
 
-	pair< Mat, double >SIMPLEX();
+	pair< Mat, double >SIMPLEX(int aux=0);
 	pair< set<int>, Mat>INIT_SOLUTION();//寻找一组可行顶点,以及对应的一组基本列的下标
 	void PIVOT(int i, int j);//选中aij为主元,把aij所在的第j列上下的元全部消掉
 
