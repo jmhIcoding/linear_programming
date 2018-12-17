@@ -266,27 +266,13 @@ pair< set<int>, Mat > LP::INIT_SOLUTION()
 					}
 				}
 			}
-			//再做一次高斯消元,让原线性规划得以运转
-			//int i, j;
-			//for (auto it = Bi.begin(); it != Bi.end(); it++)
-			//{
-			//	if (*it < co_matrix.rows && abs(ci_matrix[*it][0])>EXP)
-			//	{
-			//		j = *it;
-			//	}
-			//}
-			//for ( i = 0; i < co_matrix.rows; i++)
-			//{
-			//	if (abs(co_matrix[i][j])>EXP)
-			//	{
-			//		break;
-			//	}
-			//}
-			//PIVOT(i, j);
+			//再把z也更新一下,它的初始值比较特殊
+			z = 0;
 			for (int i = 0; i < ci_matrix.rows; i++)
 			{
-				ci_matrix[i][0] *= -1;
+				z += ci_matrix[i][0] * X[i][0];
 			}
+			z *= -1;
 			return pair<set<int>, Mat>(aux_lp.Bi, X);
 		}
 		else
